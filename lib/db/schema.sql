@@ -22,10 +22,23 @@ CREATE TABLE IF NOT EXISTS job_events (
   message TEXT NOT NULL
 );
 
+-- Suggestions table
+CREATE TABLE IF NOT EXISTS suggestions (
+  id TEXT PRIMARY KEY,
+  name TEXT,
+  email TEXT,
+  suggestion TEXT NOT NULL,
+  category TEXT,
+  status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'reviewed', 'implemented', 'rejected')),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
 -- Indexes
 CREATE INDEX IF NOT EXISTS idx_jobs_user_id ON jobs(user_id);
 CREATE INDEX IF NOT EXISTS idx_jobs_status ON jobs(status);
 CREATE INDEX IF NOT EXISTS idx_jobs_created_at ON jobs(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_job_events_job_id ON job_events(job_id);
 CREATE INDEX IF NOT EXISTS idx_job_events_timestamp ON job_events(timestamp DESC);
+CREATE INDEX IF NOT EXISTS idx_suggestions_created_at ON suggestions(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_suggestions_status ON suggestions(status);
 

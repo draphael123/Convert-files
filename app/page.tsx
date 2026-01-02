@@ -198,6 +198,22 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Suggestions Call-to-Action */}
+      <div className="mt-12 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl p-8 text-center shadow-2xl border border-white/20">
+        <h2 className="text-3xl font-bold text-white mb-3">
+          💡 Have a Suggestion?
+        </h2>
+        <p className="text-white/90 mb-6 text-lg">
+          We're always looking to improve! Share your ideas, feature requests, or feedback with us.
+        </p>
+        <Link
+          href="/suggestions"
+          className="inline-block bg-white text-purple-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
+        >
+          Share Your Suggestions →
+        </Link>
+      </div>
+
       <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-white/20">
         {error && (
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-md">

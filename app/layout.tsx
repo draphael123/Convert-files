@@ -43,6 +43,12 @@ export default function RootLayout({
                   >
                     Jobs
                   </Link>
+                  <Link
+                    href="/suggestions"
+                    className="border-transparent text-white/90 hover:text-white hover:border-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+                  >
+                    💡 Suggestions
+                  </Link>
                 </div>
               </div>
             </div>
