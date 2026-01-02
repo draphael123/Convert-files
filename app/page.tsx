@@ -207,10 +207,14 @@ export default function Home() {
     <div className="max-w-4xl mx-auto px-4 py-12">
       <div className="text-center mb-12">
         <h1 className="text-5xl font-bold gradient-text mb-4 animate-float">
-          Convert Your Files
+          Convert Your Files Instantly
         </h1>
-        <p className="text-xl text-gray-700 mb-3 font-medium">
-          Upload a file and choose your desired output format
+        <p className="text-xl text-gray-700 mb-2 font-medium">
+          The free, fast, and secure way to convert files between any format
+        </p>
+        <p className="text-base text-gray-600 mb-3 max-w-2xl mx-auto">
+          Transform images, documents, audio, video, spreadsheets, and archives with our powerful conversion engine. 
+          No sign-up required, no limits, no hassle.
         </p>
         <div className="flex items-center justify-center gap-2 flex-wrap">
           <span className="text-sm bg-gradient-to-r from-green-400 to-emerald-500 text-white px-4 py-1.5 rounded-full font-semibold shadow-md">
@@ -222,6 +226,55 @@ export default function Home() {
           <span className="text-sm bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-1.5 rounded-full font-semibold shadow-md">
             ⚡ No Limits
           </span>
+        </div>
+      </div>
+
+      {/* Value Proposition Section */}
+      <div className="mb-12 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl p-8 text-white shadow-2xl border border-white/20">
+        <div className="text-center mb-6">
+          <h2 className="text-3xl font-bold mb-4">Your Universal File Conversion Solution</h2>
+          <p className="text-lg text-white/90 max-w-3xl mx-auto leading-relaxed">
+            OmniConvert is a powerful, free file conversion tool that transforms your files between hundreds of formats instantly. 
+            Whether you need to convert images, documents, audio, video, spreadsheets, or archives, we&apos;ve got you covered.
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-6 mt-8">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+            <div className="text-4xl mb-3">🎯</div>
+            <h3 className="text-xl font-bold mb-2">Universal Compatibility</h3>
+            <p className="text-white/90 text-sm">
+              Convert between images, documents, audio, video, spreadsheets, and archives. Support for 50+ file formats with more added regularly.
+            </p>
+          </div>
+          
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+            <div className="text-4xl mb-3">⚡</div>
+            <h3 className="text-xl font-bold mb-2">Lightning Fast</h3>
+            <p className="text-white/90 text-sm">
+              No waiting, no queues. Your files are processed instantly with our optimized conversion engine. Get your converted files in seconds.
+            </p>
+          </div>
+          
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+            <div className="text-4xl mb-3">🔒</div>
+            <h3 className="text-xl font-bold mb-2">Privacy First</h3>
+            <p className="text-white/90 text-sm">
+              Your files are processed securely and automatically deleted after conversion. No storage, no tracking, no account required. Your privacy is our priority.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-8 text-center">
+          <div className="inline-flex flex-wrap items-center justify-center gap-4 bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/20">
+            <span className="text-sm font-semibold">✅ No Credit Card Required</span>
+            <span className="text-white/60">•</span>
+            <span className="text-sm font-semibold">✅ No File Size Limits</span>
+            <span className="text-white/60">•</span>
+            <span className="text-sm font-semibold">✅ No Watermarks</span>
+            <span className="text-white/60">•</span>
+            <span className="text-sm font-semibold">✅ Unlimited Conversions</span>
+          </div>
         </div>
       </div>
 
