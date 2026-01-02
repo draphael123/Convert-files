@@ -6,3 +6,5 @@ export interface StorageAdapter {
   exists(key: string): Promise<boolean>
 }
 
+
+

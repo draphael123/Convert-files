@@ -30,3 +30,5 @@ Write-Host "2. Run 'npm install' to install dependencies"
 Write-Host "3. Run 'npm run dev' to start the development server"
 Write-Host "4. Run 'npm run worker' in a separate terminal to start the worker"
 
+
+

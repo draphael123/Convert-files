@@ -30,3 +30,5 @@ echo "2. Run 'npm install' to install dependencies"
 echo "3. Run 'npm run dev' to start the development server"
 echo "4. Run 'npm run worker' in a separate terminal to start the worker"
 
+
+

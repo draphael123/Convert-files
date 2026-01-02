@@ -48,3 +48,5 @@ function mapRowToSuggestion(row: any): Suggestion {
   }
 }
 
+
+
