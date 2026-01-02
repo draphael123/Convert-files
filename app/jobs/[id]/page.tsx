@@ -29,37 +29,45 @@ export default function JobDetailPage() {
   const [job, setJob] = useState<Job | null>(null)
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    if (params.id) {
-      fetchJob()
-      // Poll for updates if job is not completed
-      const interval = setInterval(() => {
-        fetchJob().then((fetchedJob) => {
-          if (fetchedJob && (fetchedJob.status === 'queued' || fetchedJob.status === 'running')) {
-            // Job is still processing, will continue polling
-          }
-        })
-      }, 2000)
-      return () => clearInterval(interval)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params.id])
-
-  const fetchJob = async () => {
+  const fetchJob = useCallback(async () => {
     try {
       const response = await fetch(`/api/jobs/${params.id}`)
       if (response.ok) {
         const data = await response.json()
         setJob(data)
+        return data
       } else if (response.status === 404) {
         setJob(null)
+        return null
       }
+      return null
     } catch (error) {
       console.error('Failed to fetch job:', error)
+      return null
     } finally {
       setLoading(false)
     }
-  }
+  }, [params.id])
+
+  useEffect(() => {
+    if (!params.id) return
+
+    fetchJob()
+    
+    // Poll for updates if job is not completed
+    const interval = setInterval(() => {
+      fetchJob().then((fetchedJob) => {
+        if (fetchedJob && (fetchedJob.status === 'queued' || fetchedJob.status === 'running')) {
+          // Job is still processing, will continue polling
+        } else {
+          // Job completed or failed, stop polling
+          clearInterval(interval)
+        }
+      })
+    }, 2000)
+    
+    return () => clearInterval(interval)
+  }, [params.id, fetchJob])
 
   const getStatusColor = (status: string) => {
     switch (status) {
