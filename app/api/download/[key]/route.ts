@@ -31,13 +31,10 @@ export async function GET(
 
     const contentType = contentTypeMap[extension || ''] || 'application/octet-stream'
 
-    // Convert Buffer to ArrayBuffer for NextResponse
-    const arrayBuffer = buffer.buffer.slice(
-      buffer.byteOffset,
-      buffer.byteOffset + buffer.byteLength
-    )
+    // Convert Buffer to Uint8Array for NextResponse
+    const uint8Array = new Uint8Array(buffer)
 
-    return new NextResponse(arrayBuffer, {
+    return new NextResponse(uint8Array, {
       headers: {
         'Content-Type': contentType,
         'Content-Disposition': `attachment; filename="${params.key.split('/').pop()}"`,
