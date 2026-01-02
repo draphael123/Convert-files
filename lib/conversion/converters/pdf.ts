@@ -2,12 +2,6 @@ import { Converter } from '../types'
 import { join } from 'path'
 import { tmpdir } from 'os'
 import { writeFile, readFile } from 'fs/promises'
-import { exec } from 'child_process'
-import { promisify } from 'util'
-import pdfParse from 'pdf-parse'
-import { PDFDocument } from 'pdf-lib'
-
-const execAsync = promisify(exec)
 
 /**
  * PDF Converter

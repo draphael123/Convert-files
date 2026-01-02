@@ -4,7 +4,6 @@ import { tmpdir } from 'os'
 import { writeFile, readFile } from 'fs/promises'
 import { exec } from 'child_process'
 import { promisify } from 'util'
-import mammoth from 'mammoth'
 
 const execAsync = promisify(exec)
 
