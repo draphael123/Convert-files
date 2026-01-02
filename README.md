@@ -93,7 +93,9 @@ omniconvert/
 - **Text**: TXT/CSV/JSON ↔ CSV/JSON (simple transforms)
 - **Audio**: MP3 ↔ WAV (via FFmpeg)
 - **Video**: MP4 → WebM (via FFmpeg)
-- **Documents**: DOCX → PDF (via LibreOffice headless) - *stubbed for MVP*
+- **PDF**: PDF → TXT (text extraction), PDF optimization
+- **Word Documents**: DOCX → PDF/TXT/HTML (via LibreOffice or mammoth)
+- **PDF to Word**: PDF → DOCX (via LibreOffice or text extraction + docx)
 
 ## API Endpoints
 
