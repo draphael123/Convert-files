@@ -1,0 +1,56 @@
+{
+  "name": "omniconvert",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "worker": "tsx worker/index.ts",
+    "migrate": "tsx scripts/migrate.ts",
+    "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "next": "^14.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.3.3",
+    "@types/node": "^20.10.6",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "pg": "^8.11.3",
+    "@types/pg": "^8.10.9",
+    "redis": "^4.6.12",
+    "bullmq": "^5.3.0",
+    "ioredis": "^5.3.2",
+    "sharp": "^0.33.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "@types/fluent-ffmpeg": "^2.1.8",
+    "file-type": "^19.0.0",
+    "multer": "^1.4.5-lts.1",
+    "@types/multer": "^1.4.11",
+    "express": "^4.18.2",
+    "@types/express": "^4.17.21",
+    "express-rate-limit": "^7.1.5",
+    "zod": "^3.22.4",
+    "nanoid": "^5.0.4",
+    "aws-sdk": "^2.1521.0",
+    "dotenv": "^16.3.1",
+    "date-fns": "^3.0.6",
+    "react-dropzone": "^14.2.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.11",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "tsx": "^4.7.0",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "^14.0.4"
+  }
+}
+
