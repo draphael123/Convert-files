@@ -1,0 +1,19 @@
+FROM node:18-alpine
+
+# Install FFmpeg for audio/video conversions
+RUN apk add --no-cache ffmpeg
+
+WORKDIR /app
+
+# Copy package files
+COPY package.json package-lock.json* ./
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy application code
+COPY . .
+
+# Run worker
+CMD ["npm", "run", "worker"]
+
