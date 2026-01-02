@@ -4,6 +4,8 @@ import { TextConverter } from './converters/text'
 import { AudioConverter } from './converters/audio'
 import { VideoConverter } from './converters/video'
 import { DocumentConverter } from './converters/document'
+import { PdfConverter } from './converters/pdf'
+import { PdfToWordConverter } from './converters/pdf-to-word'
 
 class ConverterRegistry {
   private converters: Map<string, Converter> = new Map()
@@ -15,6 +17,8 @@ class ConverterRegistry {
     this.register(new AudioConverter())
     this.register(new VideoConverter())
     this.register(new DocumentConverter())
+    this.register(new PdfConverter())
+    this.register(new PdfToWordConverter())
   }
 
   register(converter: Converter): void {
@@ -75,6 +79,9 @@ class ConverterRegistry {
       mp4: 'video/mp4',
       webm: 'video/webm',
       pdf: 'application/pdf',
+      docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      doc: 'application/msword',
+      html: 'text/html',
     }
     return mimeMap[format.toLowerCase()] || 'application/octet-stream'
   }

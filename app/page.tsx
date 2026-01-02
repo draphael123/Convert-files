@@ -44,6 +44,9 @@ export default function Home() {
           wav: 'audio/wav',
           mp4: 'video/mp4',
           webm: 'video/webm',
+          pdf: 'application/pdf',
+          docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+          doc: 'application/msword',
         }
         mimeType = mimeMap[ext || ''] || 'application/octet-stream'
       }
@@ -78,6 +81,9 @@ export default function Home() {
       'text/*': ['.txt', '.csv', '.json'],
       'audio/*': ['.mp3', '.wav'],
       'video/*': ['.mp4', '.webm'],
+      'application/pdf': ['.pdf'],
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document': ['.docx'],
+      'application/msword': ['.doc'],
     },
   })
 
