@@ -159,47 +159,56 @@ export default function JobDetailPage() {
         </div>
 
         {job.status === 'failed' && job.errorMessage && (
-          <div className="bg-red-50 border border-red-200 rounded-md p-4">
-            <h3 className="text-sm font-medium text-red-800 mb-1">Error</h3>
-            <p className="text-sm text-red-700">{job.errorMessage}</p>
+          <div className="bg-gradient-to-r from-red-50 to-rose-50 border-2 border-red-300 rounded-xl p-6 shadow-lg">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="text-3xl">⚠️</div>
+              <h3 className="text-lg font-bold text-red-800">Conversion Failed</h3>
+            </div>
+            <p className="text-sm text-red-700 font-medium mb-2">{job.errorMessage}</p>
             {job.errorCode && (
-              <p className="text-xs text-red-600 mt-1">Code: {job.errorCode}</p>
+              <p className="text-xs text-red-600 bg-red-100 px-3 py-1 rounded-full inline-block">Code: {job.errorCode}</p>
             )}
           </div>
         )}
 
         {job.status === 'succeeded' && job.downloadUrl && (
-          <div className="bg-green-50 border border-green-200 rounded-md p-4">
-            <h3 className="text-sm font-medium text-green-800 mb-2">Conversion Complete!</h3>
+          <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 rounded-xl p-6 shadow-lg">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="text-3xl">🎉</div>
+              <h3 className="text-lg font-bold text-green-800">Conversion Complete!</h3>
+            </div>
             <a
               href={job.downloadUrl}
               download
-              className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 font-medium"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl hover:from-green-600 hover:to-emerald-700 font-bold shadow-lg transform hover:scale-105 transition-all"
             >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
               Download Converted File
             </a>
           </div>
         )}
 
         {job.status === 'running' && (
-          <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
-            <div className="flex items-center">
-              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600 mr-2"></div>
-              <p className="text-sm text-blue-800">Conversion in progress...</p>
+          <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-blue-300 rounded-xl p-6 shadow-lg">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="animate-spin rounded-full h-6 w-6 border-4 border-blue-500 border-t-transparent"></div>
+              <p className="text-base font-bold text-blue-800">🔄 Conversion in progress...</p>
             </div>
-            <p className="text-xs text-blue-600 mt-2">
+            <p className="text-sm text-blue-700">
               This may take a few moments depending on file size
             </p>
           </div>
         )}
 
         {job.status === 'queued' && (
-          <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4">
-            <div className="flex items-center">
-              <div className="animate-pulse rounded-full h-4 w-4 bg-yellow-600 mr-2"></div>
-              <p className="text-sm text-yellow-800">Job queued, waiting for worker...</p>
+          <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-300 rounded-xl p-6 shadow-lg">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="animate-pulse rounded-full h-6 w-6 bg-gradient-to-r from-yellow-400 to-orange-500"></div>
+              <p className="text-base font-bold text-yellow-800">⏳ Job queued, waiting for worker...</p>
             </div>
-            <p className="text-xs text-yellow-600 mt-2">
+            <p className="text-sm text-yellow-700">
               If this status persists, ensure the conversion worker is running
             </p>
           </div>
