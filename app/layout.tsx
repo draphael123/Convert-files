@@ -6,8 +6,8 @@ import Link from 'next/link'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'OmniConvert - File Conversion Made Easy',
-  description: 'Convert files between various formats with ease',
+  title: 'OmniConvert - Free File Conversion Tool',
+  description: '100% free file conversion tool. Convert images, documents, audio, video, and text files between various formats. No sign up required.',
 }
 
 export default function RootLayout({
