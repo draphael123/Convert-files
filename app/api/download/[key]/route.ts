@@ -31,7 +31,13 @@ export async function GET(
 
     const contentType = contentTypeMap[extension || ''] || 'application/octet-stream'
 
-    return new NextResponse(buffer, {
+    // Convert Buffer to ArrayBuffer for NextResponse
+    const arrayBuffer = buffer.buffer.slice(
+      buffer.byteOffset,
+      buffer.byteOffset + buffer.byteLength
+    )
+
+    return new NextResponse(arrayBuffer, {
       headers: {
         'Content-Type': contentType,
         'Content-Disposition': `attachment; filename="${params.key.split('/').pop()}"`,

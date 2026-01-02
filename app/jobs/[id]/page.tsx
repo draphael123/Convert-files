@@ -34,12 +34,15 @@ export default function JobDetailPage() {
       fetchJob()
       // Poll for updates if job is not completed
       const interval = setInterval(() => {
-        if (job && (job.status === 'queued' || job.status === 'running')) {
-          fetchJob()
-        }
+        fetchJob().then((fetchedJob) => {
+          if (fetchedJob && (fetchedJob.status === 'queued' || fetchedJob.status === 'running')) {
+            // Job is still processing, will continue polling
+          }
+        })
       }, 2000)
       return () => clearInterval(interval)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.id])
 
   const fetchJob = async () => {
