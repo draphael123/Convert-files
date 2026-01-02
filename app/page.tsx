@@ -135,7 +135,7 @@ export default function Home() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
-      <div className="text-center mb-8">
+      <div className="text-center mb-12">
         <h1 className="text-5xl font-bold gradient-text mb-4 animate-float">
           Convert Your Files
         </h1>
@@ -152,6 +152,49 @@ export default function Home() {
           <span className="text-sm bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-1.5 rounded-full font-semibold shadow-md">
             ⚡ No Limits
           </span>
+        </div>
+      </div>
+
+      {/* Why Conversion Matters Section */}
+      <div className="mb-12 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-2xl p-8 border border-white/20 shadow-xl">
+        <h2 className="text-3xl font-bold gradient-text mb-6 text-center">
+          Why File Conversion Matters
+        </h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/40">
+            <div className="text-4xl mb-3">📱</div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">Compatibility</h3>
+            <p className="text-gray-700">
+              Different devices and platforms require different file formats. Convert files to ensure they work perfectly on any device, browser, or application.
+            </p>
+          </div>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/40">
+            <div className="text-4xl mb-3">💾</div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">File Size Optimization</h3>
+            <p className="text-gray-700">
+              Reduce file sizes without losing quality. Convert images to WebP for smaller sizes, or compress videos for faster sharing and storage.
+            </p>
+          </div>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/40">
+            <div className="text-4xl mb-3">🔧</div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">Workflow Integration</h3>
+            <p className="text-gray-700">
+              Transform data formats for seamless integration. Convert CSV to JSON for APIs, or transform documents for different software requirements.
+            </p>
+          </div>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/40">
+            <div className="text-4xl mb-3">🌐</div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">Universal Access</h3>
+            <p className="text-gray-700">
+              Make your content accessible everywhere. Convert files to web-friendly formats like WebP, WebM, or PDF for maximum compatibility.
+            </p>
+          </div>
+        </div>
+        <div className="mt-6 text-center">
+          <p className="text-gray-700 font-medium">
+            <span className="text-purple-600 font-bold">Quick & Easy:</span> No technical knowledge required. 
+            Just upload, select your format, and download. It's that simple!
+          </p>
         </div>
       </div>
 
