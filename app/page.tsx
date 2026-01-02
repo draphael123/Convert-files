@@ -3,10 +3,12 @@
 import { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { useRouter } from 'next/navigation'
+import FormatCard from './components/FormatCard'
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null)
   const [uploading, setUploading] = useState(false)
+  const [loadingFormats, setLoadingFormats] = useState(false)
   const [availableFormats, setAvailableFormats] = useState<any[]>([])
   const [selectedFormat, setSelectedFormat] = useState<string>('')
   const [error, setError] = useState<string>('')
@@ -19,6 +21,8 @@ export default function Home() {
     setFile(selectedFile)
     setError('')
     setSelectedFormat('')
+    setAvailableFormats([])
+    setLoadingFormats(true)
 
     // Get available output formats
     try {
@@ -32,12 +36,14 @@ export default function Home() {
           jpg: 'image/jpeg',
           jpeg: 'image/jpeg',
           webp: 'image/webp',
+          gif: 'image/gif',
           csv: 'text/csv',
           json: 'application/json',
           txt: 'text/plain',
           mp3: 'audio/mpeg',
           wav: 'audio/wav',
           mp4: 'video/mp4',
+          webm: 'video/webm',
         }
         mimeType = mimeMap[ext || ''] || 'application/octet-stream'
       }
@@ -45,15 +51,22 @@ export default function Home() {
       const response = await fetch(`/api/formats?inputMime=${encodeURIComponent(mimeType)}`)
       if (response.ok) {
         const data = await response.json()
-        setAvailableFormats(data.formats || [])
-        if (data.formats && data.formats.length > 0) {
-          setSelectedFormat(data.formats[0].format)
+        const formats = data.formats || []
+        setAvailableFormats(formats)
+        if (formats.length > 0) {
+          // Auto-select first format
+          setSelectedFormat(formats[0].format)
+        } else {
+          setError('No conversion formats available for this file type')
         }
       } else {
-        setError('Unable to determine supported output formats')
+        const errorData = await response.json().catch(() => ({}))
+        setError(errorData.error || 'Unable to determine supported output formats')
       }
     } catch (err: any) {
       setError(err.message || 'Failed to process file')
+    } finally {
+      setLoadingFormats(false)
     }
   }, [])
 
@@ -184,33 +197,60 @@ export default function Home() {
           </div>
         </div>
 
-        {file && availableFormats.length > 0 && (
+        {file && (
           <div className="mt-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Output Format
-            </label>
-            <select
-              value={selectedFormat}
-              onChange={(e) => setSelectedFormat(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-            >
-              {availableFormats.map((format) => (
-                <option key={format.format} value={format.format}>
-                  {format.format.toUpperCase()} ({format.converterName})
-                </option>
-              ))}
-            </select>
+            {loadingFormats ? (
+              <div className="text-center py-8">
+                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+                <p className="mt-2 text-sm text-gray-500">Loading available formats...</p>
+              </div>
+            ) : availableFormats.length > 0 ? (
+              <>
+                <label className="block text-sm font-medium text-gray-700 mb-3">
+                  Select Output Format ({availableFormats.length} options available)
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                  {availableFormats.map((format) => (
+                    <FormatCard
+                      key={format.format}
+                      format={format.format}
+                      converterName={format.converterName}
+                      isSelected={selectedFormat === format.format}
+                      onClick={() => setSelectedFormat(format.format)}
+                    />
+                  ))}
+                </div>
+                {selectedFormat && (
+                  <button
+                    onClick={handleConvert}
+                    disabled={uploading}
+                    className="mt-6 w-full bg-primary-600 text-white py-3 px-4 rounded-md font-medium hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  >
+                    {uploading ? (
+                      <span className="flex items-center justify-center">
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Uploading and converting...
+                      </span>
+                    ) : (
+                      `Convert to ${selectedFormat.toUpperCase()}`
+                    )}
+                  </button>
+                )}
+              </>
+            ) : (
+              <div className="text-center py-4">
+                <p className="text-sm text-red-600">
+                  No conversion formats available for this file type.
+                </p>
+                <p className="text-xs text-gray-500 mt-1">
+                  Supported types: Images (PNG, JPG, WebP), Text (CSV, JSON, TXT), Audio (MP3, WAV), Video (MP4, WebM)
+                </p>
+              </div>
+            )}
           </div>
-        )}
-
-        {file && selectedFormat && (
-          <button
-            onClick={handleConvert}
-            disabled={uploading}
-            className="mt-6 w-full bg-primary-600 text-white py-3 px-4 rounded-md font-medium hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {uploading ? 'Processing...' : 'Start Conversion'}
-          </button>
         )}
       </div>
     </div>
