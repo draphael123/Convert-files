@@ -1,6 +1,8 @@
 # OmniConvert
 
-A production-ready MVP web application for converting files between various formats, built with a plugin-based architecture for easy extensibility.
+A **100% free** production-ready MVP web application for converting files between various formats, built with a plugin-based architecture for easy extensibility.
+
+**✨ Completely Free - No Sign Up Required - No Hidden Costs**
 
 ## Features
 

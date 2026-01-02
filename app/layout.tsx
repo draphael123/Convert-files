@@ -24,6 +24,9 @@ export default function RootLayout({
               <div className="flex">
                 <Link href="/" className="flex items-center">
                   <span className="text-2xl font-bold text-primary-600">OmniConvert</span>
+                  <span className="ml-2 text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-medium">
+                    FREE
+                  </span>
                 </Link>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   <Link

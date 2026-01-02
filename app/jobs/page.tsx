@@ -66,6 +66,7 @@ export default function JobsPage() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Conversion Jobs</h1>
         <p className="text-gray-600">View all your file conversion jobs</p>
+        <p className="text-sm text-primary-600 mt-1">Free to use • No account required</p>
       </div>
 
       {jobs.length === 0 ? (

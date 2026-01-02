@@ -5,8 +5,9 @@ import type { NextRequest } from 'next/server'
 // In production, use Redis-based rate limiting
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
 
+// Generous rate limits for free public access
 const RATE_LIMIT_WINDOW_MS = parseInt(process.env.RATE_LIMIT_WINDOW_MS || '60000')
-const RATE_LIMIT_MAX_REQUESTS = parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '100')
+const RATE_LIMIT_MAX_REQUESTS = parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '1000') // 1000 requests per minute
 
 function getRateLimitKey(request: NextRequest): string {
   // Use IP address for rate limiting

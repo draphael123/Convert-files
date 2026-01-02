@@ -126,8 +126,11 @@ export default function Home() {
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
           Convert Your Files
         </h1>
-        <p className="text-lg text-gray-600">
+        <p className="text-lg text-gray-600 mb-2">
           Upload a file and choose your desired output format
+        </p>
+        <p className="text-sm text-primary-600 font-medium">
+          100% Free • No Sign Up Required • No Limits
         </p>
       </div>
 
