@@ -15,8 +15,16 @@ export class AudioConverter implements Converter {
     'audio/wav',
     'audio/wave',
     'audio/x-wav',
+    'audio/flac',
+    'audio/aac',
+    'audio/ogg',
+    'audio/vorbis',
+    'audio/x-m4a',
+    'audio/mp4',
+    'audio/x-ms-wma',
+    'audio/wma',
   ]
-  supportedOutputFormats = ['mp3', 'wav']
+  supportedOutputFormats = ['mp3', 'wav', 'flac', 'aac', 'ogg', 'm4a']
   constraints = {
     maxFileSizeMB: 100,
     timeoutMs: 300000, // 5 minutes

@@ -13,8 +13,15 @@ export class VideoConverter implements Converter {
     'video/mp4',
     'video/webm',
     'video/x-msvideo', // AVI
+    'video/quicktime', // MOV
+    'video/x-matroska', // MKV
+    'video/x-flv', // FLV
+    'video/x-ms-wmv', // WMV
+    'video/mpeg', // MPEG
+    'video/avi',
+    'video/3gpp',
   ]
-  supportedOutputFormats = ['webm', 'mp4']
+  supportedOutputFormats = ['webm', 'mp4', 'avi', 'mov', 'mkv', 'flv', 'wmv', 'mpeg']
   constraints = {
     maxFileSizeMB: 500,
     timeoutMs: 600000, // 10 minutes
