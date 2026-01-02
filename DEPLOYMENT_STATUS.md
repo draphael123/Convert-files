@@ -3,11 +3,14 @@
 ## ✅ All Changes Committed and Pushed
 
 Latest commits:
-- `b861b38` - Add worker requirement note and improve job status messages
-- `ef44c67` - Add multiple format selection UI with visual format cards
-- `34387c4` - Update metadata to emphasize free service
-- `01f37fe` - Make website completely free: increase rate limits, add free badges
-- `d14866d` - Fix ArrayBuffer type error by using Uint8Array instead
+- `9770ea3` - Add docx library to package.json
+- `5b46a5e` - Add docx library and update README with PDF/Word conversion options
+- `c592a15` - Fix imports and add docx library for PDF to Word conversion
+- `11294b2` - Add PDF and Word document conversion support with multiple format options
+- `a97ecb6` - Add suggestions page and API endpoint for visitor feedback
+- `871f918` - Fix status color function in job detail page
+- `d62b76f` - Enhance status badges with gradients and improve visual feedback
+- `b8c6687` - Add explanation section about why file conversion is important and useful
 
 ## 🚀 Vercel Auto-Deployment
 
@@ -18,31 +21,43 @@ Vercel is connected to your GitHub repository and will automatically deploy when
 ### Automatic Deployment
 - ✅ Repository: `draphael123/Convert-files`
 - ✅ Branch: `main`
-- ✅ Latest commit: `b861b38`
+- ✅ Latest commit: `9770ea3`
 - ✅ Vercel should automatically trigger deployment
 
 ### Check Deployment Status
 1. Go to [vercel.com](https://vercel.com)
 2. Navigate to your project dashboard
 3. Check the "Deployments" tab
-4. Look for the latest deployment (should show commit `b861b38`)
+4. Look for the latest deployment (should show commit `9770ea3` or later)
 
 ## 📋 What's Being Deployed
 
 ### New Features
-1. **Visual Format Selection**
+1. **PDF and Word Document Conversion**
+   - PDF → TXT (text extraction)
+   - PDF → DOCX (PDF to Word)
+   - Word → PDF/TXT/HTML
+   - Multiple format options for documents
+
+2. **Suggestions System**
+   - New `/suggestions` page for visitor feedback
+   - API endpoint to store suggestions
+   - Database table for suggestion management
+   - Call-to-action on homepage
+
+3. **Colorful Design Updates**
+   - Vibrant gradients throughout
+   - Enhanced status badges with animations
+   - Colorful format cards
+   - Modern, engaging UI
+
+4. **Visual Format Selection**
    - Format cards grid instead of dropdown
    - Multiple conversion options visible at once
    - Click to select format
    - Visual feedback for selected format
 
-2. **Improved UI/UX**
-   - Loading spinners
-   - Better error messages
-   - Enhanced job status displays
-   - Worker requirement notifications
-
-3. **Free Service Badges**
+5. **Free Service Badges**
    - "FREE" badge in navigation
    - Free messaging throughout UI
    - Increased rate limits (1000 req/min)
