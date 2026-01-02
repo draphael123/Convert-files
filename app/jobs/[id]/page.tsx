@@ -117,10 +117,10 @@ export default function JobDetailPage() {
         >
           ← Back to Jobs
         </Link>
-        <h1 className="text-3xl font-bold text-gray-900">Job Details</h1>
+        <h1 className="text-4xl font-bold gradient-text">Job Details</h1>
       </div>
 
-      <div className="bg-white rounded-lg shadow-lg p-8 space-y-6">
+      <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8 space-y-6 border border-white/20">
         <div>
           <h2 className="text-sm font-medium text-gray-500 mb-1">Job ID</h2>
           <p className="text-sm font-mono text-gray-900">{job.id}</p>

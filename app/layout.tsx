@@ -18,26 +18,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav className="bg-white shadow-sm border-b">
+        <nav className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 shadow-lg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-16">
               <div className="flex">
-                <Link href="/" className="flex items-center">
-                  <span className="text-2xl font-bold text-primary-600">OmniConvert</span>
-                  <span className="ml-2 text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-medium">
+                <Link href="/" className="flex items-center group">
+                  <span className="text-2xl font-bold text-white group-hover:scale-105 transition-transform">
+                    OmniConvert
+                  </span>
+                  <span className="ml-2 text-xs bg-white text-purple-600 px-3 py-1 rounded-full font-bold shadow-md animate-pulse-slow">
                     FREE
                   </span>
                 </Link>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   <Link
                     href="/"
-                    className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                    className="border-transparent text-white/90 hover:text-white hover:border-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
                   >
                     Convert
                   </Link>
                   <Link
                     href="/jobs"
-                    className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                    className="border-transparent text-white/90 hover:text-white hover:border-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
                   >
                     Jobs
                   </Link>
@@ -46,7 +48,7 @@ export default function RootLayout({
             </div>
           </div>
         </nav>
-        <main className="min-h-screen bg-gray-50">{children}</main>
+        <main className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">{children}</main>
       </body>
     </html>
   )

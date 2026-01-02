@@ -136,18 +136,26 @@ export default function Home() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-5xl font-bold gradient-text mb-4 animate-float">
           Convert Your Files
         </h1>
-        <p className="text-lg text-gray-600 mb-2">
+        <p className="text-xl text-gray-700 mb-3 font-medium">
           Upload a file and choose your desired output format
         </p>
-        <p className="text-sm text-primary-600 font-medium">
-          100% Free • No Sign Up Required • No Limits
-        </p>
+        <div className="flex items-center justify-center gap-2 flex-wrap">
+          <span className="text-sm bg-gradient-to-r from-green-400 to-emerald-500 text-white px-4 py-1.5 rounded-full font-semibold shadow-md">
+            ✨ 100% Free
+          </span>
+          <span className="text-sm bg-gradient-to-r from-blue-400 to-cyan-500 text-white px-4 py-1.5 rounded-full font-semibold shadow-md">
+            🚀 No Sign Up
+          </span>
+          <span className="text-sm bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-1.5 rounded-full font-semibold shadow-md">
+            ⚡ No Limits
+          </span>
+        </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow-lg p-8">
+      <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-white/20">
         {error && (
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-md">
             <p className="text-sm text-red-800">{error}</p>
@@ -156,16 +164,16 @@ export default function Home() {
 
         <div
           {...getRootProps()}
-          className={`border-2 border-dashed rounded-lg p-12 text-center cursor-pointer transition-colors ${
+          className={`border-3 border-dashed rounded-2xl p-12 text-center cursor-pointer transition-all duration-300 ${
             isDragActive
-              ? 'border-primary-500 bg-primary-50'
-              : 'border-gray-300 hover:border-primary-400'
+              ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-pink-50 scale-105 shadow-lg'
+              : 'border-purple-300 hover:border-purple-400 hover:bg-gradient-to-br hover:from-purple-50/50 hover:to-pink-50/50 hover:shadow-md'
           }`}
         >
           <input {...getInputProps()} />
           <div className="space-y-4">
             <svg
-              className="mx-auto h-12 w-12 text-gray-400"
+              className="mx-auto h-16 w-16 text-purple-500 animate-float"
               stroke="currentColor"
               fill="none"
               viewBox="0 0 48 48"
@@ -178,19 +186,24 @@ export default function Home() {
               />
             </svg>
             {file ? (
-              <div>
-                <p className="text-sm font-medium text-gray-900">{file.name}</p>
-                <p className="text-xs text-gray-500">
+              <div className="space-y-2">
+                <div className="flex items-center justify-center gap-2">
+                  <svg className="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <p className="text-base font-bold text-gray-900">{file.name}</p>
+                </div>
+                <p className="text-sm text-purple-600 font-medium">
                   {(file.size / 1024 / 1024).toFixed(2)} MB
                 </p>
               </div>
             ) : (
-              <div>
-                <p className="text-sm text-gray-600">
+              <div className="space-y-2">
+                <p className="text-base font-semibold text-gray-700">
                   Drag and drop a file here, or click to select
                 </p>
-                <p className="text-xs text-gray-500 mt-2">
-                  Supports images, documents, text, audio, and video
+                <p className="text-sm text-gray-600 mt-2">
+                  ✨ Supports images, documents, text, audio, and video
                 </p>
               </div>
             )}
@@ -206,8 +219,8 @@ export default function Home() {
               </div>
             ) : availableFormats.length > 0 ? (
               <>
-                <label className="block text-sm font-medium text-gray-700 mb-3">
-                  Select Output Format ({availableFormats.length} options available)
+                <label className="block text-lg font-bold gradient-text mb-4">
+                  🎯 Select Output Format ({availableFormats.length} options available)
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                   {availableFormats.map((format) => (
@@ -224,7 +237,7 @@ export default function Home() {
                   <button
                     onClick={handleConvert}
                     disabled={uploading}
-                    className="mt-6 w-full bg-primary-600 text-white py-3 px-4 rounded-md font-medium hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="mt-6 w-full bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-white py-4 px-6 rounded-xl font-bold text-lg hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 focus:outline-none focus:ring-4 focus:ring-purple-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg"
                   >
                     {uploading ? (
                       <span className="flex items-center justify-center">

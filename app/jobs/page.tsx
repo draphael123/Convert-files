@@ -64,23 +64,31 @@ export default function JobsPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Conversion Jobs</h1>
-        <p className="text-gray-600">View all your file conversion jobs</p>
-        <p className="text-sm text-primary-600 mt-1">Free to use • No account required</p>
+        <h1 className="text-4xl font-bold gradient-text mb-3">Conversion Jobs</h1>
+        <p className="text-lg text-gray-700 mb-2">View all your file conversion jobs</p>
+        <div className="flex items-center gap-2">
+          <span className="text-sm bg-gradient-to-r from-green-400 to-emerald-500 text-white px-3 py-1 rounded-full font-semibold">
+            Free to use
+          </span>
+          <span className="text-sm bg-gradient-to-r from-blue-400 to-cyan-500 text-white px-3 py-1 rounded-full font-semibold">
+            No account required
+          </span>
+        </div>
       </div>
 
       {jobs.length === 0 ? (
-        <div className="bg-white rounded-lg shadow p-8 text-center">
-          <p className="text-gray-500">No jobs yet. Start converting files to see them here.</p>
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-12 text-center border border-white/20">
+          <div className="text-6xl mb-4">📁</div>
+          <p className="text-lg text-gray-700 mb-4">No jobs yet. Start converting files to see them here.</p>
           <Link
             href="/"
-            className="mt-4 inline-block text-primary-600 hover:text-primary-700 font-medium"
+            className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-xl font-bold hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg"
           >
             Convert a file →
           </Link>
         </div>
       ) : (
-        <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/20">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>

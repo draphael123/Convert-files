@@ -7,28 +7,48 @@ interface FormatCardProps {
   onClick: () => void
 }
 
+const formatColors: Record<string, string> = {
+  png: 'from-blue-400 to-cyan-500',
+  jpg: 'from-orange-400 to-red-500',
+  jpeg: 'from-orange-400 to-red-500',
+  webp: 'from-purple-400 to-pink-500',
+  gif: 'from-green-400 to-emerald-500',
+  csv: 'from-yellow-400 to-orange-500',
+  json: 'from-indigo-400 to-purple-500',
+  txt: 'from-gray-400 to-slate-500',
+  mp3: 'from-pink-400 to-rose-500',
+  wav: 'from-blue-400 to-indigo-500',
+  mp4: 'from-red-400 to-pink-500',
+  webm: 'from-purple-400 to-violet-500',
+  pdf: 'from-red-500 to-red-600',
+}
+
 export default function FormatCard({ format, converterName, isSelected, onClick }: FormatCardProps) {
+  const colorClass = formatColors[format.toLowerCase()] || 'from-gray-400 to-gray-500'
+  
   return (
     <button
       onClick={onClick}
       className={`
-        relative p-4 border-2 rounded-lg transition-all duration-200
+        relative p-5 border-2 rounded-xl transition-all duration-300 transform
         ${isSelected
-          ? 'border-primary-500 bg-primary-50 shadow-md'
-          : 'border-gray-200 bg-white hover:border-primary-300 hover:shadow-sm'
+          ? `border-transparent bg-gradient-to-br ${colorClass} text-white shadow-xl scale-105`
+          : 'border-gray-200 bg-white hover:border-purple-300 hover:shadow-lg hover:scale-105'
         }
-        focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
+        focus:outline-none focus:ring-4 focus:ring-purple-300
       `}
     >
       <div className="text-center">
-        <div className="text-2xl font-bold text-gray-900 mb-1">
+        <div className={`text-3xl font-bold mb-2 ${isSelected ? 'text-white' : 'text-gray-900'}`}>
           {format.toUpperCase()}
         </div>
-        <div className="text-xs text-gray-500">{converterName}</div>
+        <div className={`text-xs ${isSelected ? 'text-white/90' : 'text-gray-600'}`}>
+          {converterName}
+        </div>
         {isSelected && (
-          <div className="absolute top-2 right-2">
+          <div className="absolute top-2 right-2 animate-bounce">
             <svg
-              className="w-5 h-5 text-primary-600"
+              className="w-6 h-6 text-white drop-shadow-lg"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
