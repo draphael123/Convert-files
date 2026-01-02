@@ -72,15 +72,15 @@ export default function JobDetailPage() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'succeeded':
-        return 'bg-green-100 text-green-800'
+        return 'bg-gradient-to-r from-green-400 to-emerald-500 text-white shadow-lg'
       case 'failed':
-        return 'bg-red-100 text-red-800'
+        return 'bg-gradient-to-r from-red-400 to-rose-500 text-white shadow-lg'
       case 'running':
-        return 'bg-blue-100 text-blue-800'
+        return 'bg-gradient-to-r from-blue-400 to-cyan-500 text-white shadow-lg animate-pulse'
       case 'queued':
-        return 'bg-yellow-100 text-yellow-800'
+        return 'bg-gradient-to-r from-yellow-400 to-orange-500 text-white shadow-lg'
       default:
-        return 'bg-gray-100 text-gray-800'
+        return 'bg-gradient-to-r from-gray-400 to-slate-500 text-white shadow-lg'
     }
   }
 
