@@ -34,7 +34,19 @@ export async function POST(request: NextRequest) {
     // Upload to storage
     const storage = getStorage()
     const fileKey = `uploads/${nanoid()}/${file.name}`
-    await storage.upload(buffer, fileKey, validation.mimeType)
+    
+    try {
+      await storage.upload(buffer, fileKey, validation.mimeType)
+    } catch (storageError: any) {
+      console.error('Storage upload error:', storageError)
+      // Check if we're on Vercel and using local storage (which won't work)
+      if (process.env.VERCEL && process.env.STORAGE_TYPE !== 's3') {
+        return NextResponse.json({ 
+          error: 'File storage not configured. Please configure S3 storage for production deployments.' 
+        }, { status: 500 })
+      }
+      throw storageError
+    }
 
     return NextResponse.json({
       fileKey,
@@ -43,7 +55,12 @@ export async function POST(request: NextRequest) {
     })
   } catch (error: any) {
     console.error('Upload error:', error)
-    return NextResponse.json({ error: 'Upload failed' }, { status: 500 })
+    // Return more specific error message
+    const errorMessage = error.message || 'Upload failed'
+    return NextResponse.json({ 
+      error: errorMessage,
+      details: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    }, { status: 500 })
   }
 }
 

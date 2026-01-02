@@ -166,7 +166,12 @@ export default function Home() {
       })
 
       if (!uploadResponse.ok) {
-        const errorData = await uploadResponse.json()
+        let errorData
+        try {
+          errorData = await uploadResponse.json()
+        } catch {
+          errorData = { error: `Upload failed with status ${uploadResponse.status}` }
+        }
         throw new Error(errorData.error || 'Upload failed')
       }
 

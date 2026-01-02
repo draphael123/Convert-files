@@ -24,10 +24,8 @@ export async function validateFile(buffer: Buffer, originalName?: string): Promi
   try {
     detectedType = await fileTypeFromBuffer(buffer)
   } catch (error) {
-    return {
-      valid: false,
-      error: 'Unable to detect file type',
-    }
+    // If file-type detection fails, try to infer from filename
+    console.warn('file-type detection failed, trying filename inference:', error)
   }
 
   if (!detectedType) {
@@ -47,14 +45,56 @@ export async function validateFile(buffer: Buffer, originalName?: string): Promi
         if (originalName?.endsWith('.json')) {
           return { valid: true, mimeType: 'application/json' }
         }
+        if (originalName?.endsWith('.xml')) {
+          return { valid: true, mimeType: 'application/xml' }
+        }
+        if (originalName?.endsWith('.md') || originalName?.endsWith('.markdown')) {
+          return { valid: true, mimeType: 'text/markdown' }
+        }
+        if (originalName?.endsWith('.html') || originalName?.endsWith('.htm')) {
+          return { valid: true, mimeType: 'text/html' }
+        }
+        if (originalName?.endsWith('.yaml') || originalName?.endsWith('.yml')) {
+          return { valid: true, mimeType: 'text/yaml' }
+        }
       }
     } catch {
       // Not valid UTF-8
     }
 
+    // If we still don't have a type, try to infer from extension
+    if (originalName) {
+      const ext = originalName.split('.').pop()?.toLowerCase()
+      const extensionMimeMap: Record<string, string> = {
+        png: 'image/png',
+        jpg: 'image/jpeg',
+        jpeg: 'image/jpeg',
+        webp: 'image/webp',
+        gif: 'image/gif',
+        pdf: 'application/pdf',
+        docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        doc: 'application/msword',
+        xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        xls: 'application/vnd.ms-excel',
+        mp3: 'audio/mpeg',
+        wav: 'audio/wav',
+        mp4: 'video/mp4',
+        zip: 'application/zip',
+      }
+      
+      if (ext && extensionMimeMap[ext]) {
+        return { valid: true, mimeType: extensionMimeMap[ext] }
+      }
+    }
+
+    // Last resort: allow with generic type if file is small enough
+    if (buffer.length < 10 * 1024 * 1024) { // 10MB
+      return { valid: true, mimeType: 'application/octet-stream' }
+    }
+
     return {
       valid: false,
-      error: 'File type could not be determined',
+      error: 'File type could not be determined. Please ensure the file has a valid extension.',
     }
   }
 
