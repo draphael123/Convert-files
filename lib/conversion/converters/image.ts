@@ -44,14 +44,15 @@ export class ImageConverter implements Converter {
     } else if (outputFormat === 'gif') {
       pipeline = pipeline.gif()
     } else if (outputFormat === 'bmp') {
-      pipeline = pipeline.bmp()
+      // Sharp doesn't have a bmp() method, use toFormat instead
+      pipeline = pipeline.toFormat('bmp')
     } else if (outputFormat === 'tiff') {
       pipeline = pipeline.tiff({ compression: 'lzw' })
     } else if (outputFormat === 'avif') {
       pipeline = pipeline.avif({ quality: options?.quality || 90 })
     } else if (outputFormat === 'ico') {
-      // ICO is typically a container format, convert to PNG first then handle
-      pipeline = pipeline.png()
+      // ICO format - convert to PNG as ICO is a container format
+      pipeline = pipeline.toFormat('png')
     } else if (outputFormat === 'svg') {
       // SVG conversion is complex, would need specialized library
       // For now, convert raster formats to SVG (simplified)
