@@ -187,6 +187,21 @@ export default function JobDetailPage() {
               <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600 mr-2"></div>
               <p className="text-sm text-blue-800">Conversion in progress...</p>
             </div>
+            <p className="text-xs text-blue-600 mt-2">
+              This may take a few moments depending on file size
+            </p>
+          </div>
+        )}
+
+        {job.status === 'queued' && (
+          <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4">
+            <div className="flex items-center">
+              <div className="animate-pulse rounded-full h-4 w-4 bg-yellow-600 mr-2"></div>
+              <p className="text-sm text-yellow-800">Job queued, waiting for worker...</p>
+            </div>
+            <p className="text-xs text-yellow-600 mt-2">
+              If this status persists, ensure the conversion worker is running
+            </p>
           </div>
         )}
 

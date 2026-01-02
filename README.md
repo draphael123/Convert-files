@@ -58,10 +58,11 @@ A **100% free** production-ready MVP web application for converting files betwee
    npm run dev
    ```
 
-6. **In a separate terminal, start the worker**:
+6. **In a separate terminal, start the worker** (REQUIRED for conversions to work):
    ```bash
    npm run worker
    ```
+   ⚠️ **Important**: The worker must be running for file conversions to process. Without it, jobs will be queued but never completed.
 
 7. **Open your browser**:
    Navigate to `http://localhost:3000`
