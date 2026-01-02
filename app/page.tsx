@@ -395,6 +395,64 @@ export default function Home() {
           </div>
         )}
       </div>
+
+      {/* Instructions Section */}
+      <div className="mt-12 bg-gradient-to-br from-yellow-50 via-orange-50 to-amber-50 rounded-2xl p-8 border-2 border-yellow-200 shadow-xl">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <span className="text-3xl">📋</span>
+          Setup Instructions for Vercel Deployment
+        </h2>
+        <div className="space-y-4 text-gray-700">
+          <div className="bg-white/80 rounded-lg p-4 border border-yellow-200">
+            <h3 className="font-bold text-lg mb-2 text-orange-700">⚠️ Important: Storage Configuration Required</h3>
+            <p className="mb-3">
+              Vercel uses a read-only filesystem, so <strong>local file storage won&apos;t work</strong>. You must configure S3 (or S3-compatible) storage for uploads to function.
+            </p>
+          </div>
+
+          <div className="bg-white/80 rounded-lg p-4 border border-yellow-200">
+            <h3 className="font-bold text-lg mb-2 text-blue-700">🔧 Step 1: Set Up S3 Storage</h3>
+            <p className="mb-2">Choose one of these options:</p>
+            <ul className="list-disc list-inside space-y-1 ml-2 text-sm">
+              <li><strong>AWS S3</strong> - Standard cloud storage</li>
+              <li><strong>Cloudflare R2</strong> - Free tier available (recommended)</li>
+              <li><strong>DigitalOcean Spaces</strong> - Simple and affordable</li>
+              <li><strong>Backblaze B2</strong> - Cost-effective option</li>
+            </ul>
+          </div>
+
+          <div className="bg-white/80 rounded-lg p-4 border border-yellow-200">
+            <h3 className="font-bold text-lg mb-2 text-purple-700">⚙️ Step 2: Configure Environment Variables</h3>
+            <p className="mb-2">In your Vercel project settings, add these environment variables:</p>
+            <div className="bg-gray-900 text-green-400 p-3 rounded font-mono text-xs overflow-x-auto">
+              <div>STORAGE_TYPE=s3</div>
+              <div>AWS_ACCESS_KEY_ID=your_access_key</div>
+              <div>AWS_SECRET_ACCESS_KEY=your_secret_key</div>
+              <div>AWS_REGION=us-east-1</div>
+              <div>S3_BUCKET=your-bucket-name</div>
+              <div className="text-yellow-400 mt-2"># For S3-compatible services, also add:</div>
+              <div>S3_ENDPOINT=https://your-endpoint.com</div>
+            </div>
+          </div>
+
+          <div className="bg-white/80 rounded-lg p-4 border border-yellow-200">
+            <h3 className="font-bold text-lg mb-2 text-green-700">🚀 Step 3: Redeploy</h3>
+            <p>After adding the environment variables, redeploy your application. Uploads should now work correctly!</p>
+          </div>
+
+          <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+            <p className="text-sm text-blue-800">
+              <strong>💡 Tip:</strong> For local development, you can use <code className="bg-blue-100 px-1 rounded">STORAGE_TYPE=local</code>, but remember this won&apos;t work on Vercel.
+            </p>
+          </div>
+
+          <div className="text-center mt-4">
+            <p className="text-sm text-gray-600">
+              Need more help? Check the <code className="bg-gray-200 px-2 py-1 rounded">VERCEL_STORAGE_SETUP.md</code> file in the repository for detailed instructions.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
