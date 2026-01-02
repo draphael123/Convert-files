@@ -3,6 +3,7 @@
 import { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import FormatCard from './components/FormatCard'
 
 export default function Home() {
@@ -199,7 +200,7 @@ export default function Home() {
         <div className="mt-6 text-center">
           <p className="text-gray-700 font-medium">
             <span className="text-purple-600 font-bold">Quick & Easy:</span> No technical knowledge required. 
-            Just upload, select your format, and download. It's that simple!
+            Just upload, select your format, and download. It&apos;s that simple!
           </p>
         </div>
       </div>
@@ -210,7 +211,7 @@ export default function Home() {
           💡 Have a Suggestion?
         </h2>
         <p className="text-white/90 mb-6 text-lg">
-          We're always looking to improve! Share your ideas, feature requests, or feedback with us.
+          We&apos;re always looking to improve! Share your ideas, feature requests, or feedback with us.
         </p>
         <Link
           href="/suggestions"

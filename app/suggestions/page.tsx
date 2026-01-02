@@ -81,7 +81,7 @@ export default function SuggestionsPage() {
           💡 Share Your Suggestions
         </h1>
         <p className="text-lg text-gray-700 mb-2">
-          We'd love to hear your ideas and feedback!
+          We&apos;d love to hear your ideas and feedback!
         </p>
         <p className="text-sm text-gray-600">
           Help us improve OmniConvert by sharing your thoughts, feature requests, or reporting issues.
@@ -196,7 +196,7 @@ export default function SuggestionsPage() {
             </div>
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-xl">
               <div className="font-bold text-green-700 mb-2">🐛 Bug Reports</div>
-              <p className="text-sm text-gray-700">Issues you've encountered that need fixing</p>
+              <p className="text-sm text-gray-700">Issues you&apos;ve encountered that need fixing</p>
             </div>
             <div className="bg-gradient-to-br from-orange-50 to-yellow-50 p-4 rounded-xl">
               <div className="font-bold text-orange-700 mb-2">🎨 UI/UX Feedback</div>
